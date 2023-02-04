@@ -28,6 +28,7 @@ export default function LogIn() {
 
     fetch(`${root}/let-me-in`, {
       method: "POST",
+      credentials: "include",
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",

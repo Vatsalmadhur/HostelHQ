@@ -8,10 +8,11 @@ import BuildingBox from "../Components/BuildingBox";
 const Warden = () => {
   useEffect(() => {
     const verify = async () => {
-      await fetch("http://localhost:5000/checkAuth", {
+      await fetch("http://localhost:5000/checkAuth?role=0", {
         method: "GET",
         crossdomain: true,
         withCredentials: "include",
+        credentials: "include",
       })
         .then((res) => res.json())
         .then((res) => manageAuth(res));
@@ -60,10 +61,9 @@ const Warden = () => {
           mt: 15,
         }}
       >
-        <Typography variant="h2" >Warden Profile</Typography>
-        <Table/>
+        <Typography variant="h2">Warden Profile</Typography>
+        <Table />
       </Box>
-
 
       <Box
         sx={{
@@ -73,39 +73,38 @@ const Warden = () => {
           mt: 15,
           bgcolor: "coral",
           textAlign: "center",
-          p: 2
-        }}
-      >
-         <Typography variant="h3" >Existing Buildings</Typography>
-
-         <Box
-        className="hostelDetails"
-        sx={{
-          width: "100vw",
-          boxSizing: "border-box",
-          height: "auto",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
           p: 2,
-          scrollX: "auto",
         }}
       >
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-        <BuildingBox />
-      </Box>
-      </Box>
+        <Typography variant="h3">Existing Buildings</Typography>
 
+        <Box
+          className="hostelDetails"
+          sx={{
+            width: "100vw",
+            boxSizing: "border-box",
+            height: "auto",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            p: 2,
+            scrollX: "auto",
+          }}
+        >
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+          <BuildingBox />
+        </Box>
+      </Box>
     </div>
   );
 };
