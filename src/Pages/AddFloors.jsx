@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import Circle from "../Components/Circle";
 
-export default function AddBuilding() {
+export default function AddFloor() {
   const [loginAs, setloginAs] = useState();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +53,7 @@ export default function AddBuilding() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Add New Building
+          Add New Floor
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           
@@ -73,7 +73,17 @@ export default function AddBuilding() {
             required
             fullWidth
             id="text"
-            label="Number of Floors"
+            label="Floor Number"
+            name=""
+            autoComplete=""
+            autoFocus
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="text"
+            label="Number of Rooms"
             name=""
             autoComplete=""
             autoFocus
@@ -81,7 +91,7 @@ export default function AddBuilding() {
           
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Sure to add a new building"
+            label="Sure to add a new floor"
           />
           <Button
             type="submit"
