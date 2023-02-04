@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Stack, Avatar, Typography, Link } from "@mui/material";
 import Btn from "../Components/Btn";
+
 import Circle from "../Components/Circle";
+import image from "../../src/hostelImg.svg";
 
 const Home = () => {
   return (
@@ -57,6 +59,17 @@ const Home = () => {
         <Circle x={-100} y={-65} r={130} />
         <Circle a={-150} b={-200} r={250} />
         <Circle a={350} b={200} r={10} />
+
+        <Box
+          display="flex"
+          flexWrap="wrap"
+          position="absolute"
+          right={200}
+          top={80}
+          className="image"
+        >
+          <img height={500} width={500} src={image} alt="" />
+        </Box>
       </Box>
     </div>
   );
