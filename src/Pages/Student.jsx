@@ -1,4 +1,8 @@
+import { Box, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Btn from '../Components/Btn'
+import Table from '../Components/Table'
 
 const Student = () => {
   return (
@@ -25,9 +29,21 @@ const Student = () => {
             HostelHQ
           </Typography>
           <Link to="/complain-form">
-            <Btn value="Complain" />
+            <Btn value="Add Complain" />
           </Link>
         </Stack>
+            </Box>
+
+            <Box  sx={{mt:10 ,textAlign: 'center'}}>
+              <h1>Student Detail</h1>
+            </Box>
+
+            <Box className="studentDetails" 
+                sx={{
+                    mt: 15
+                }}
+            >
+                <Table />
             </Box>
     </div>
   )
