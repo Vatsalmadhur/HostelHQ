@@ -1,0 +1,37 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+.main1{
+    height: 600px;
+    width: 600px;
+    background-color: #EB7C3E;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: -100px;
+
+
+}
+.main2{
+    height: 400px;
+    width: 400px;
+    background-color: #EB7C3E;
+    border-radius: 50%;
+    position: absolute;
+    top:-200px;
+    left: -200px;
+
+    
+}
+.main3{
+    height: 20px;
+    width: 20px;
+    background-color: #EB7C3E;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100px;
+    right: 400px;
+
+
+}

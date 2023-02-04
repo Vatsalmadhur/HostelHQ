@@ -3,6 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 import Home from './Pages/Home';
 import Login from './Pages/Login';
+import { Box } from '@mui/system';
 
 
 const router = createBrowserRouter([
@@ -18,12 +19,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <main>
+    <Box overflow="hidden" >
       <RouterProvider 
         router={router}>
-	  hello
       </RouterProvider>
-    </main>
+    </Box>
   );
 }
 
