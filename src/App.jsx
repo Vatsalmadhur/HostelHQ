@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import {Box} from '@mui/material';
 import Warden from './Pages/Warden';
+import AddBuilding from './Pages/AddBuilding';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/warden',
     element: <Warden />,
+  },
+  {
+    path: '/addbuilding',
+    element: <AddBuilding />,
   }
 ])
 
