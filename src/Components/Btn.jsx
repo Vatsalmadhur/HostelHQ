@@ -6,12 +6,9 @@ const Btn = (props) => {
     <div>
       <Button
         sx={{
-          bgcolor: "primary.main",
-
-          "&:hover": { bgcolor: "primary.main" },
-          color: "white",
+          bgcolor: "coral",
+          "&:hover": { bgcolor: "coral" },
         }}
-        textDecoration="none"
         variant="contained"
       >
         {props.value}
