@@ -46,8 +46,8 @@ const Home = () => {
         className="body"
         position = "relative"
       >
-        <h1>HostelHQ</h1>
-        <Typography variant="h5" mb={2} color="#EB7C3E" marginRight="20px">
+        <Typography variant="h1">HostelHQ</Typography>
+        <Typography variant="h4" mb={2} color="#EB7C3E" marginRight="20px">
           The complete hostel management system.
         </Typography>
 
