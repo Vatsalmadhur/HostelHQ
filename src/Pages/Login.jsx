@@ -12,6 +12,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Circle from "../Components/Circle";
+import Circle2 from "../Components/Circle2";
+import { padding, positions } from "@mui/system";
 
 export default function LogIn() {
   const [loginAs, setloginAs] = useState();
@@ -30,14 +33,23 @@ export default function LogIn() {
   };
 
   return (
+    <Box  overflow="hidden" position="relative">
+      <Box sx={{height:"100vh", bgcolor:"rgb(92, 107, 192, 0.4)",display:"flex" }}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
+      padding={4} 
+      zIndex={2}
         sx={{
-          marginTop: 8,
+          marginTop: 15,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          bgcolor:"white",
+          borderRadius:"10px",
+          position:"relative"
+         
+          
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
@@ -63,14 +75,15 @@ export default function LogIn() {
           </FormControl>
 
           <TextField
-            margin="normal"
+             margin="normal"
             required
             fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
+            // autoFocus
+       
           />
 
           <TextField
@@ -110,6 +123,14 @@ export default function LogIn() {
         </Box>
       </Box>
     </Container>
+
+
+    </Box>
+       <Circle x={-100} y={-65} r={130} />
+        <Circle a={-150} b={-200} r={250} />
+        <Circle a={350} b={200} r={10} />
+    </Box>
+  
   );
 }
 

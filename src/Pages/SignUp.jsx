@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Circle from '../Components/Circle';
 
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 // import Link
@@ -28,15 +29,22 @@ export default function SignUp() {
   };
 
   return (
+    <Box  overflow="hidden" position="relative">
+      <Box sx={{height:"100vh", bgcolor:"rgb(92, 107, 192, 0.4)",display:"flex" }}>
    
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
+        padding={4} 
+        zIndex={2}
           sx={{
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            bgcolor:"white",
+          borderRadius:"10px",
+          position:"relative"
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
@@ -132,6 +140,12 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
+      
+      </Box>
+       <Circle x={-100} y={-65} r={130} />
+        <Circle a={-150} b={-200} r={250} />
+        <Circle a={350} b={200} r={10} />
+    </Box>
   
   );
 }

@@ -7,7 +7,7 @@ import image from "../../src/hostelImg.svg";
 
 const Home = () => {
   return (
-    <div className="Home">
+    <Box className="Home">
       <Box
         className="navbar"
         zIndex={2}
@@ -16,7 +16,7 @@ const Home = () => {
         sx={{
           width: "100%",
           height: "8vh",
-          bgcolor: "#ACACAC",
+          bgcolor:"rgb(92, 107, 192, 0.6)",
         }}
       >
         <Stack
@@ -71,7 +71,7 @@ const Home = () => {
           <img height={500} width={500} src={image} alt="" />
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 
