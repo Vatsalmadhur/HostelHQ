@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import Btn from "../Components/Btn";
-import Table from "../Components/Table";
-import BuildingBox from "../Components/BuildingBox";
+import Table from "../Components/BuildingTable";
+import BuildingBox from "../Components/RoomBox";
 
 const Warden = () => {
   return (
@@ -41,7 +41,7 @@ const Warden = () => {
           mt: 15,
         }}
       >
-        <Typography variant="h2">Warden Profile</Typography>
+        <Typography variant="h2">Building Name</Typography>
         <Table />
       </Box>
 
