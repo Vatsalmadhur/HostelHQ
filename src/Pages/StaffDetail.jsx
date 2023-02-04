@@ -6,7 +6,7 @@ import Table from '../Components/Table'
 
 const Student = () => {
   return (
-    <div className='Student'>
+    <div className='Staff'>
         <Box
         className="navbar"
         position="absolute"
@@ -29,16 +29,16 @@ const Student = () => {
             HostelHQ
           </Typography>
           <Link to="/complain-form">
-            <Btn value="Add Complain" />
+            <Btn value="Edit Menu" />
           </Link>
         </Stack>
             </Box>
 
             <Box  sx={{mt:10 ,textAlign: 'center'}}>
-              <h1>Student Detail</h1>
+              <h1>Staff Detail</h1>
             </Box>
 
-            <Box className="studentDetails" 
+            <Box className="staffDetails" 
                 sx={{
                     mt: 15
                 }}
