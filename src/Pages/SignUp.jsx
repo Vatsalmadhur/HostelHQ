@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,13 +19,84 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 
 export default function SignUp() {
+
+
+  const [signupAs, setSignupAs] = useState(0);
+  const [name , setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [institute , setInstitute] = useState();
+  const [contact, setContact] = useState();
+
+
+  // const signup = (e) => {
+    
+  //   const root = 'https://hostelhq.onrender.com'
+
+  //   fetch(`${root}/signup`, {
+  //     method : 'POST',
+  //     headers: {
+  //       'Accept': 'application/json, text/plain, */*',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       role : signupAs,
+  //       name : name.value,
+  //       email : email.value,
+  //       institute : institute.value,
+  //       contact : contact.value,
+  //       pass : pass.value,
+  //     })
+  //   })
+  //     .then(response => response.json())
+  //     .then(response => signupStatus(response.status, e))
+
+  // }
+
+  const signupStatus =(status,btn)=>{
+    if(status){
+      btn.innerText="redirecting..." ;
+      // location.href=`/dashboard`
+      <Navigate to={signupAs.value==0 ? '/warden' : signupAs.value==1 ? '/student' : '/staff' } />
+      
+  
+    }
+    else{
+      btn.innerText="try again"
+    }
+  }
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    
+      const root = 'https://hostelhq.onrender.com'
+  
+      fetch(`${root}/add-new-user`, {
+        method : 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          role : signupAs,
+          name : data.get('name'),
+          email : data.get('email'),
+          institute : data.get('institute'),
+          contact : data.get('contact'),
+          pass : data.get('pass'),
+        })
+      })
+        .then(response => response.json())
+        .then(response => signupStatus(response.status, e))
+  
+  };
+
+  const handleDropDown = (e) => {
+    console.log(e.target.value);
+    setSignupAs(e.target.value);
   };
 
   return (
@@ -53,9 +125,9 @@ export default function SignUp() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={signupAs}
+                  value={signupAs}
                   label={"Login as"}
-                // onChange={handleDropDown}
+                onChange={handleDropDown}
                 >
                   <MenuItem value={0}>Warden</MenuItem>
                   <MenuItem value={1}>Student</MenuItem>
@@ -70,6 +142,8 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="name"
+                  value={name}
+            onChange={(e)=> setName(e.target.value)}
                   label="Name"
                   autoFocus
                 />
@@ -80,33 +154,55 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
+                  value={email}
+            onChange={(e)=> setEmail(e.target.value)}
                   label="Email Address"
                   name="email"
                   autoComplete="email"
                 />
               </Grid>
+              {signupAs==1 && <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-institute"
+                  name="institute"
+                  required
+                  fullWidth
+                  id="institute"
+                  value={institute}
+            onChange={(e)=> setInstitute(e.target.value)}
+                  label="Institute"
+                  autoFocus
+                />
+              </Grid>}
+
+              {signupAs==1 &&<Grid item xs={12}>
+                <TextField
+                  autoComplete="number"
+                  name="contact"
+                  required
+                  fullWidth
+                  id="contact"
+                  value={contact}
+            onChange={(e)=> setContact(e.target.value)}
+                  label="Contact"
+                  autoFocus
+                />
+              </Grid>}
+
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="pass"
                   label="Password"
                   type="password"
                   id="password"
+                  value={password}
+            onChange={(e)=> setPassword(e.target.value)}
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password Again"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
