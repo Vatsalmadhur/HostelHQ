@@ -28,7 +28,7 @@ const Home = () => {
           <Typography variant="h5" fontWeight={800} zIndex={2}>
             HostelHQ
           </Typography>
-          <Link to="/signup">
+          <Link href="/signup">
             <Btn value="SignUp" />
           </Link>
         </Stack>
@@ -47,11 +47,11 @@ const Home = () => {
         position="relative"
       >
         <Typography variant="h1">HostelHQ</Typography>
-        <Typography variant="h4" mb={2} color="#EB7C3E" >
+        <Typography variant="h4" mb={2} color="#EB7C3E">
           The complete hostel management system.
         </Typography>
 
-        <Link to="/login">
+        <Link href="/login">
           <Btn value="Login" />
         </Link>
         <Circle x={-100} y={-65} r={130} />

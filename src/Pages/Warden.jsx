@@ -1,16 +1,14 @@
-
-import { Box, Stack, Typography } from '@mui/material'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Btn from '../Components/Btn'
-import Table from '../Components/Table'
-import BuildingBox from '../Components/BuildingBox'
-
+import { Box, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+import Btn from "../Components/Btn";
+import Table from "../Components/Table";
+import BuildingBox from "../Components/BuildingBox";
 
 const Warden = () => {
-    return (
-        <div className='Warden' >
-            <Box
+  return (
+    <div className="Warden">
+      <Box
         className="navbar"
         position="absolute"
         top={0}
@@ -35,42 +33,48 @@ const Warden = () => {
             <Btn value="Add Hostel" />
           </Link>
         </Stack>
-            </Box>
+      </Box>
 
-            <Box className="wardenDetails" 
-                sx={{
-                    mt: 15
-                }}
-            >
-                <Table />
-            </Box>
+      <Box
+        className="wardenDetails"
+        sx={{
+          mt: 15,
+        }}
+      >
+        <Table />
+      </Box>
 
-            <Box className="hostelDetails"
+      <Box
+        className="hostelDetails"
+        sx={{
+          width: "100vw",
+          boxSizing: "border-box",
+          height: "auto",
+          mt: 15,
+          bgcolor: "coral",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap",
+          p: 2,
+          scrollX: "auto",
+        }}
+      >
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+        <BuildingBox />
+      </Box>
+    </div>
+  );
+};
 
-                sx={{
-                    width: "100vw",
-                    boxSizing: "border-box",
-                    height: "auto",
-                    mt: 15,
-                    bgcolor: "coral",
-                    display: "flex",
-                    flexDirection:"row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    p: 2,
-                    scrollX: "auto",
-                }}
-            >
-                <BuildingBox />
-                <BuildingBox />
-                <BuildingBox />
-                <BuildingBox />
-                <BuildingBox />
-                <BuildingBox />
-                <BuildingBox />
-            </Box>
-        </div>
-    )
-}
+export default Warden;
 
-export default Warden
