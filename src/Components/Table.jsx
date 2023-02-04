@@ -10,14 +10,12 @@ function createData(key, val) {
   return { key, val };
 }
 
-const rows = [
-  createData("Name", "Anurag Shukla"),
-  createData("Email", "test@email.com"),
-  createData("Phone", "75867597859"),
-  createData("No. of buildings", 12),
-];
-
-export default function BasicTable() {
+export default function BasicTable({ prof }) {
+  const rows = [
+    createData("Name", prof.data.name),
+    createData("Email", prof.data.email),
+    createData("Phone", " 7068179922"),
+  ];
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

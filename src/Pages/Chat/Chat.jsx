@@ -1,82 +1,91 @@
-import React from "react";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Paper } from "@material-ui/core";
-import { TextInput } from "./TextInput.js";
-import { MessageLeft, MessageRight } from "./Message";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'clsx';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      width: "80vw",
-      height: "80vh",
-      maxWidth: "500px",
-      maxHeight: "700px",
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column",
-      position: "relative"
-    },
-    paper2: {
-      width: "80vw",
-      maxWidth: "500px",
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column",
-      position: "relative"
-    },
-    container: {
-      width: "100vw",
-      height: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    messagesBody: {
-      width: "calc( 100% - 20px )",
-      margin: 10,
-      overflowY: "scroll",
-      height: "calc( 100% - 80px )"
+import {Typography, Avatar, Grid} from '@mui/material';
+
+import withStyles from '@mui/material/styles';
+import styles from './Chat.styles';
+
+const ChatMsg = withStyles(styles, { name: 'ChatMsg' })(props => {
+  const {
+    classes,
+    avatar,
+    messages,
+    side,
+    GridContainerProps,
+    GridItemProps,
+    AvatarProps,
+    getTypographyProps,
+  } = props;
+  const attachClass = index => {
+    if (index === 0) {
+      return classes[`${side}First`];
     }
-  })
-);
-
-export default function App() {
-  const classes = useStyles();
+    if (index === messages.length - 1) {
+      return classes[`${side}Last`];
+    }
+    return '';
+  };
   return (
-    <div className={classes.container}>
-      <Paper className={classes.paper} zDepth={2}>
-        <Paper id="style-1" className={classes.messagesBody}>
-          <MessageLeft
-            message="あめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName=""
-            avatarDisp={true}
+    <Grid
+      container
+      spacing={2}
+      justify={side === 'right' ? 'flex-end' : 'flex-start'}
+      {...GridContainerProps}
+    >
+      {side === 'left' && (
+        <Grid item {...GridItemProps}>
+          <Avatar
+            src={avatar}
+            {...AvatarProps}
+            className={cx(classes.avatar, AvatarProps.className)}
           />
-          <MessageLeft
-            message="xxxxxhttps://yahoo.co.jp xxxxxxxxxあめんぼあかいなあいうえおあいうえおかきくけこさぼあかいなあいうえおあいうえおかきくけこさぼあかいなあいうえおあいうえおかきくけこさいすせそ"
-            timestamp="MM/DD 00:00"
-            photoURL=""
-            displayName="テスト"
-            avatarDisp={false}
-          />
-          <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={true}
-          />
-          <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={false}
-          />
-        </Paper>
-        <TextInput />
-      </Paper>
-    </div>
+        </Grid>
+      )}
+      <Grid item xs={8}>
+        {messages.map((msg, i) => {
+          const TypographyProps = getTypographyProps(msg, i, props);
+          return (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={msg.id || i} className={classes[`${side}Row`]}>
+              <Typography
+                align={'left'}
+                {...TypographyProps}
+                className={cx(
+                  classes.msg,
+                  classes[side],
+                  attachClass(i),
+                  TypographyProps.className
+                )}
+              >
+                {msg}
+              </Typography>
+            </div>
+          );
+        })}
+      </Grid>
+    </Grid>
   );
-}
+});
+
+ChatMsg.propTypes = {
+  avatar: PropTypes.string,
+  messages: PropTypes.arrayOf(PropTypes.string),
+  side: PropTypes.oneOf(['left', 'right']),
+  GridContainerProps: PropTypes.shape({}),
+  GridItemProps: PropTypes.shape({}),
+  AvatarProps: PropTypes.shape({}),
+  getTypographyProps: PropTypes.func,
+};
+ChatMsg.defaultProps = {
+  avatar: '',
+  messages: [],
+  side: 'left',
+  GridContainerProps: {},
+  GridItemProps: {},
+  AvatarProps: {},
+  getTypographyProps: () => ({}),
+};
+
+export default ChatMsg;

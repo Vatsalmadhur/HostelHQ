@@ -1,11 +1,13 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Btn from "../Components/Btn";
 import Table from "../Components/Table";
 import BuildingBox from "../Components/BuildingBox";
 
 const Warden = () => {
+  const [prof, setProf] = useState();
+  const [buildings, setBuildings] = useState();
   useEffect(() => {
     const verify = async () => {
       await fetch("http://localhost:5000/checkAuth?role=0", {
@@ -15,15 +17,29 @@ const Warden = () => {
         credentials: "include",
       })
         .then((res) => res.json())
-        .then((res) => manageAuth(res));
+        .then((res) => {
+          setProf(res);
+          if (!res.result) {
+            location.href = "/login";
+          }
+        });
     };
-    const manageAuth = (val) => {
-      console.log(val);
-      if (!val.result) {
-        location.href = `/login`;
-      }
+
+    const getBuildings = async () => {
+      await fetch("http://localhost:5000/getBuildings", {
+        method: "GET",
+        crossdomain: true,
+        withCredentials: "include",
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          setBuildings(res);
+        });
     };
     verify();
+    getBuildings();
   }, []);
 
   return (
@@ -62,7 +78,7 @@ const Warden = () => {
         }}
       >
         <Typography variant="h2">Warden Profile</Typography>
-        <Table />
+        {prof && <Table prof={prof} />}
       </Box>
 
       <Box
@@ -92,18 +108,7 @@ const Warden = () => {
             p: 2,
             scrollX: "auto",
           }}
-        >
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-          <BuildingBox />
-        </Box>
+        ></Box>
       </Box>
     </div>
   );

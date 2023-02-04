@@ -33,8 +33,10 @@ export default function BasicCard() {
         <Typography variant="h5" component="div">
           Room Number : X
         </Typography>
-        <Typography variant="body2">Status: not free</Typography>
-        <Typography variant="body2">3 Students</Typography>
+        <Typography variant="body2">Floor Number: Y</Typography>
+        <Typography variant="body2">Building Name: XYZ</Typography>
+        <Typography variant="body2">Number of Students : P</Typography>
+
       </CardContent>
       <CardActions>
         <Link href="/room">

@@ -3,11 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Btn from "../Components/Btn";
 import Table from "../Components/BuildingTable";
-import FloorBox from "../Components/FloorBox";
+import RoomDetailsBox from "../Components/RoomDetailsBox";
+import RoomStudentDetailsBox from "../Components/RoomStudentDetailsBox";
 
-const Building = () => {
+
+const Room = () => {
   return (
-    <div className="Building">
+    <div className="Room">
       <Box
         className="navbar"
         position="absolute"
@@ -29,21 +31,21 @@ const Building = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/addfloor">
-            <Btn value="Add Floors" />
+          <Link to="/allocate-room">
+            <Btn value="Allocate room" />
           </Link>
         </Stack>
       </Box>
 
-      <Box
-        className="buildingDetails"
-        sx={{
-          mt: 15,
-        }}
-      >
-        <Typography variant="h2">Building Name</Typography>
-        <Table />
-      </Box>
+        <Box sx={{
+            mt: 15,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        }}>
+            <RoomDetailsBox />
+        </Box>
+      
 
       <Box
 
@@ -57,7 +59,7 @@ const Building = () => {
           textAlign:"center"
         }}
       >
-        <Typography variant="h3">Existing Floors</Typography>
+        <Typography variant="h3">Student Details</Typography>
 <Box
         className="hostelDetails"
         sx={{
@@ -74,16 +76,13 @@ const Building = () => {
           scrollX: "auto",
         }}
       >
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
+        <RoomStudentDetailsBox />
+        <RoomStudentDetailsBox />
+        <RoomStudentDetailsBox />
+        <RoomStudentDetailsBox />
+        <RoomStudentDetailsBox />
+        <RoomStudentDetailsBox />
+        
       </Box>
       </Box>
 
@@ -91,4 +90,4 @@ const Building = () => {
   );
 };
 
-export default Building;
+export default Room;

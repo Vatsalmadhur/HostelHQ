@@ -152,6 +152,10 @@ app.get("/checkAuth", async (req, res) => {
 
 app.use(resolveToken);
 
+app.get("/getWardenData", (req, res) => {
+  const uid = req.usrProf.uid;
+});
+
 app.post("/add-building", async (req, res) => {
   const { name, floors } = req.body;
   const { rows } = await db.addBuilding({
@@ -168,6 +172,20 @@ app.post("/add-floor", async (req, res) => {
   res.status(200).json(rows);
 });
 
+app.get("/getBuildings", async (req, res) => {
+  const warden = req.usrProf.uid;
+  console.log(req.usrProf);
+  const rows = await db.getallBuildings(uid);
+  return rows;
+});
+
+app.post("/addBuilding", async (req, res) => {
+  const { name, floors } = req.body;
+  const uid = req.usrProf.uid;
+  const rows = await db.addBuilding({ name, floors, warden: uid });
+  res.send(rows);
+});
+
 const server = http.listen(port, () => {
   console.log(`running on port ${port}`);
 });
@@ -175,7 +193,6 @@ const server = http.listen(port, () => {
 async function verifyToken(authToken, role) {
   try {
     const table = role == 0 ? "wardens" : role == 1 ? "students" : "staffs";
-    console.log(table);
     const payload = jwt.verify(authToken, secret);
     const query = `SELECT * FROM ${table} WHERE uid = $1;`;
     const values = [payload.data];

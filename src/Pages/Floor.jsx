@@ -3,11 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Btn from "../Components/Btn";
 import Table from "../Components/BuildingTable";
-import FloorBox from "../Components/FloorBox";
+import RoomBox from "../Components/RoomBox";
 
-const Building = () => {
+const Floor = () => {
   return (
-    <div className="Building">
+    <div className="Floor">
       <Box
         className="navbar"
         position="absolute"
@@ -29,8 +29,8 @@ const Building = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/addfloor">
-            <Btn value="Add Floors" />
+          <Link to="/addrooms">
+            <Btn value="Add Rooms" />
           </Link>
         </Stack>
       </Box>
@@ -41,7 +41,7 @@ const Building = () => {
           mt: 15,
         }}
       >
-        <Typography variant="h2">Building Name</Typography>
+        <Typography variant="h2">Building Name, Floor Number</Typography>
         <Table />
       </Box>
 
@@ -57,7 +57,7 @@ const Building = () => {
           textAlign:"center"
         }}
       >
-        <Typography variant="h3">Existing Floors</Typography>
+        <Typography variant="h3">Existing Rooms</Typography>
 <Box
         className="hostelDetails"
         sx={{
@@ -74,16 +74,16 @@ const Building = () => {
           scrollX: "auto",
         }}
       >
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
+        <RoomBox />
       </Box>
       </Box>
 
@@ -91,4 +91,4 @@ const Building = () => {
   );
 };
 
-export default Building;
+export default Floor;
