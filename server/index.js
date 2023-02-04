@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const http = require("http").Server(app);
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET_KEY;
+const cors = require("cors");
 
 const db = require("./dbFunc");
 
@@ -21,6 +22,23 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb" }));
 app.use(cookieParser());
+app.use(
+    cors({
+        credentials: true,
+        origin:['*'],
+        methods: ['GET', 'POST'],
+    })
+);
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+});
+
 
 const resolveToken = async (req, res, next) => {
   const url = req.originalUrl.split("?")[0];
@@ -134,19 +152,18 @@ const server = http.listen(port, () => {
   console.log(`running on port ${port}`);
 });
 
-async function verifyToken(authToken){
-	try{
-		const payload = jwt.verify(authToken, secret)
-		const query = `SELECT * FROM users WHERE uid = $1;`;
-		const values = [payload.data];
-		const { rows } = await db.query(query, values)
-		if(rows.length==0){
-			return {result:false}
-		}else{
-			return {result:true,data:rows[0],uid:payload.data}
-		}
-	}catch(e){
-		return {result:false}
-	}
+async function verifyToken(authToken) {
+  try {
+    const payload = jwt.verify(authToken, secret);
+    const query = `SELECT * FROM users WHERE uid = $1;`;
+    const values = [payload.data];
+    const { rows } = await db.query(query, values);
+    if (rows.length == 0) {
+      return { result: false };
+    } else {
+      return { result: true, data: rows[0], uid: payload.data };
+    }
+  } catch (e) {
+    return { result: false };
+  }
 }
-
