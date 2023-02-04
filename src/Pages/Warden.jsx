@@ -31,7 +31,7 @@ const Warden = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/signup">
+          <Link to="/addbuilding">
             <Btn value="Add Hostel" />
           </Link>
         </Stack>
@@ -61,6 +61,9 @@ const Warden = () => {
                     scrollX: "auto",
                 }}
             >
+                <BuildingBox />
+                <BuildingBox />
+                <BuildingBox />
                 <BuildingBox />
                 <BuildingBox />
                 <BuildingBox />
