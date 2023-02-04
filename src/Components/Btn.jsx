@@ -6,10 +6,12 @@ const Btn = (props) => {
     <div>
       <Button
         sx={{
-          bgcolor: "coral",
+          bgcolor: "primary.main",
 
-          "&:hover": { bgcolor: "coral" },
+          "&:hover": { bgcolor: "primary.main" },
+          color: "white",
         }}
+        textDecoration="none"
         variant="contained"
       >
         {props.value}
@@ -19,4 +21,3 @@ const Btn = (props) => {
 };
 
 export default Btn;
-

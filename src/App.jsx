@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import {Box} from '@mui/material';
 
 
 const router = createBrowserRouter([
@@ -22,14 +23,13 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-	return (
-		<main>
-		<RouterProvider 
-		router={router}>
-		hello
-		</RouterProvider>
-		</main>
-	);
+  return (
+    <Box overflow="hidden" >
+      <RouterProvider 
+        router={router}>
+      </RouterProvider>
+    </Box>
+  );
 }
 
 export default App;
