@@ -7,7 +7,6 @@ const Btn = (props) => {
          <Button 
             sx={{
                 bgcolor: 'coral',
-                
                 "&:hover": {bgcolor: 'coral'}
                 
             }}
