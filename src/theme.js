@@ -9,7 +9,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Roboto",
+    fontFamily: "Ubuntu",
   },
   shape: {},
   props: {
