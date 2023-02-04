@@ -12,51 +12,39 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import {Navigate} from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 
 export default function LogIn() {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
-
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-
-
-  const [loginAs, setloginAs] = useState();
+  const [loginAs, setloginAs] = useState(0);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const root = 'https://hostelhq.onrender.com'
+    const root = "http://localhost:5000";
 
     fetch(`${root}/let-me-in`, {
-      method : 'POST',
+      method: "POST",
       headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        role : loginAs,
-        pass : data.get('pass'),
-        email : data.get('email')
-      })
+        role: loginAs,
+        pass: data.get("pass"),
+        email: data.get("email"),
+      }),
     })
-      .then(response => response.json())
-      .then(response => loginStatus(response.status, e))
+      .then((response) => response.json())
+      .then((response) => loginStatus(response.status));
 
-  
-
-  const loginStatus =(status,btn)=>{
-    if(status){
-      btn.innerText="redirecting..." ;
-      // location.href=`/dashboard`
-      <Navigate to={loginAs.value==0 ? '/warden' : loginAs.value==1 ? '/student' : '/staff' } />
-  
-    }
-    else{
-      btn.innerText="try again"
-    }
-  }
-
-
+    const loginStatus = (status) => {
+      if (status) {
+        location.href =
+          loginAs == 0 ? "/warden" : loginAs == 1 ? "/student" : "/staff";
+      }
+    };
   };
 
   const handleDropDown = (e) => {
@@ -103,7 +91,7 @@ export default function LogIn() {
             fullWidth
             id="email"
             value={email}
-            onChange={(e)=> setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -119,7 +107,7 @@ export default function LogIn() {
             type="password"
             id="password"
             value={pass}
-            onChange={(e)=> setPass(e.target.value)}
+            onChange={(e) => setPass(e.target.value)}
             autoComplete="current-password"
           />
           <FormControlLabel
@@ -149,8 +137,6 @@ export default function LogIn() {
           </Grid>
         </Box>
       </Box>
-      
     </Container>
   );
 }
-

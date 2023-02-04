@@ -7,6 +7,8 @@ const http = require("http").Server(app);
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET_KEY;
 const cors = require("cors");
+const bcrypt = require("bcryptjs");
+const saltRounds = 10;
 
 const db = require("./dbFunc");
 
@@ -22,23 +24,23 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb" }));
 app.use(cookieParser());
+
 app.use(
-    cors({
-        credentials: true,
-        origin:['*'],
-        methods: ['GET', 'POST', 'OPTIONS'],
-    })
+  cors({
+    credentials: true,
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "POST"],
+  })
 );
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    next();
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
-
 
 const resolveToken = async (req, res, next) => {
   const url = req.originalUrl.split("?")[0];
@@ -67,11 +69,12 @@ app.get("/", (req, res) => {
 
 app.post("/add-new-user", async (req, res) => {
   const { email, pass, name, role } = req.body;
+  const table = role === 0 ? "wardens" : role === 1 ? "students" : "staffs";
   const emailquery = `
-	SELECT * FROM users WHERE email = $1;
+	SELECT * FROM ${table} WHERE email = $1;
 	`;
   const emailvalues = [email];
-  const dupEmail = await db.query(emailquery, emailvalues);
+  const dupEmail = await database.query(emailquery, emailvalues);
   if (dupEmail.rows.length != 0) {
     res.send({ status: false, email: true, result: "email exists" });
     return;
@@ -98,10 +101,11 @@ app.post("/add-new-user", async (req, res) => {
 /* Login Endpoint */
 
 app.post("/let-me-in", async (req, res) => {
+  console.log(req.body);
   const { email, pass, role } = req.body;
   const table = role === 0 ? "wardens" : role === 1 ? "students" : "staffs";
   const query = `
-	SELECT * FROM users WHERE ${table} = $1;
+	SELECT * FROM ${table} WHERE email = $1;
 	`;
   const values = [email];
   const { rows } = await database.query(query, values);
@@ -128,6 +132,21 @@ app.post("/let-me-in", async (req, res) => {
       res.send({ status: false, result: "wrong email or password" });
     }
   }
+});
+
+app.get("/checkAuth", async (req, res) => {
+  const token = req.cookies.token;
+  console.log(token);
+  const authData = await verifyToken(token);
+  res.status(200).json({
+    result: authData.result,
+    data: authData.result
+      ? {
+          name: authData.data.name,
+          email: authData.data.email,
+        }
+      : {},
+  });
 });
 
 app.use(resolveToken);

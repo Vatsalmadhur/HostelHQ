@@ -3,6 +3,15 @@ const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET_KEY;
+const generateUid = () => {
+  var pass = "";
+  var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (i = 1; i <= 16; i++) {
+    var char = Math.floor(Math.random() * str.length + 1);
+    pass += str.charAt(char);
+  }
+  return pass;
+};
 
 const addWarden = async ({ name, email, pass }) => {
   const query = `
@@ -86,14 +95,14 @@ const addFloor = async ({ building, rooms, number }) => {
   return rows;
 };
 
-const addRoom = async ({ number, floor }) => {
+const addRoom = async ({ number, floor, building }) => {
   const query = `
-	INSERT INTO rooms (number, floor, uid) 
-	VALUES($1,$2,$3)
+	INSERT INTO rooms (number, floor, uid, building) 
+	VALUES($1,$2,$3, $4)
 	RETURNING *;
 	`;
   const uid = generateUid();
-  const values = [number, floor, uid];
+  const values = [number, floor, uid, building];
 
   const { rows } = await db.query(query, values);
 
