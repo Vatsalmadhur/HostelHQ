@@ -11,10 +11,6 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: '/signup',
-    element: <Signup />,
-  },
-  {
     path: '/login',
     element: <Login />,
   }
@@ -25,6 +21,7 @@ function App() {
     <main>
       <RouterProvider 
         router={router}>
+	  hello
       </RouterProvider>
     </main>
   );
