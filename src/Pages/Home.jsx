@@ -4,9 +4,12 @@ import Btn from "../Components/Btn";
 
 import Circle from "../Components/Circle";
 import image from "../../src/hostelImg.svg";
+import { bgcolor, border } from "@mui/system";
 
 const Home = () => {
   return (
+    <Box>
+
     <Box className="Home">
       <Box
         className="navbar"
@@ -71,6 +74,7 @@ const Home = () => {
           <img height={500} width={500} src={image} alt="" />
         </Box>
       </Box>
+    </Box>
     </Box>
   );
 };

@@ -30,7 +30,7 @@ const Warden = () => {
             HostelHQ
           </Typography>
           <Link to="/addbuilding">
-            <Btn value="Add Hostel" />
+            <Btn value="Add Building" />
           </Link>
         </Stack>
       </Box>
@@ -65,7 +65,6 @@ const Warden = () => {
           width: "100vw",
           boxSizing: "border-box",
           height: "auto",
-          bgcolor: "coral",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
