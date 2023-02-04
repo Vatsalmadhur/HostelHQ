@@ -9,7 +9,7 @@ const pool = new Pool({
   host: "dpg-cfeeiqun6mpu0ucm43u0-a.singapore-postgres.render.com",
   max: 5,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000,
+  connectionTimeoutMillis: 10000,
   ssl: true,
 });
 
