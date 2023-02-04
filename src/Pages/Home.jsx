@@ -26,7 +26,9 @@ const Home = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Btn value="SignUp" />
+          <Link to="/signup">
+            <Btn value="SignUp" />
+          </Link>
         </Stack>
       </Box>
 
