@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Warden from './Pages/Warden';
 import AddBuilding from './Pages/AddBuilding';
+import Student from './Pages/Student';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: '/addbuilding',
     element: <AddBuilding />,
+  },
+  {
+    path: '/student',
+    element: <Student />,
   }
 ])
 
