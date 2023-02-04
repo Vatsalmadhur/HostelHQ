@@ -41,6 +41,11 @@ const router = createBrowserRouter([
     element: <Staff />,
 
   }
+	, 
+	{
+	  path:"/building", 
+	  element:<Building/>
+  }
 ])
 
 function App() {
