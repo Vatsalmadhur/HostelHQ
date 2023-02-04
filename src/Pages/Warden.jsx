@@ -49,6 +49,7 @@ const Warden = () => {
 
                 sx={{
                     width: "100vw",
+                    boxSizing: "border-box",
                     height: "auto",
                     mt: 15,
                     bgcolor: "coral",
