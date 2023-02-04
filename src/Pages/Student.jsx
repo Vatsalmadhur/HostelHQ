@@ -28,7 +28,7 @@ const Student = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/complain-form">
+          <Link to="/complainT">
             <Btn value="Add Complain" />
           </Link>
         </Stack>

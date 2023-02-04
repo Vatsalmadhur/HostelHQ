@@ -10,6 +10,8 @@ import AddBuilding from "./Pages/AddBuilding";
 import Building from "./Pages/Building";
 import Student from "./Pages/Student";
 import Staff from "./Pages/StaffDetail";
+import Complaint from "./Pages/Complaint";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
     path: "/staff",
     element: <Staff />,
   },
+  {
+    path: "/complaint",
+    element: <Complaint />,
+  }
 ]);
 
 function App() {
