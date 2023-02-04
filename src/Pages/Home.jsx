@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Stack, Avatar } from "@mui/material";
+import { Box, Stack, Avatar, Typography } from "@mui/material";
 import Btn from "../Components/Btn";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,8 @@ const Home = () => {
     <div className="Home">
       <Box
         className="navbar"
+        position="absolute"
+        top={0}
         sx={{
           width: "100%",
           height: "8vh",
@@ -22,24 +24,33 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Typography variant="h5" fontWeight={800}>
+            HostelHQ
+          </Typography>
           <Btn value="SignUp" />
         </Stack>
       </Box>
 
-      <Box className="body">
-        <Stack direction="column">
-          <h1>HostelHQ</h1>
-          <h4>The complete hostel management system</h4>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="flex-start"
+        pl={8}
+        flexDirection="column"
+        minHeight="100vh"
+        className="body"
+      >
+        <h1>HostelHQ</h1>
+        <Typography variant="h5" mb={2} color="#EB7C3E">
+          The complete hostel management system
+        </Typography>
 
-          <Link to="/login">
-            <Btn value="Login" />
-          </Link>
-        </Stack>
+        <Link to="/login">
+          <Btn value="Login" />
+        </Link>
       </Box>
     </div>
   );
 };
 
 export default Home;
-
