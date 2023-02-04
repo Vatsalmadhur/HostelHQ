@@ -31,12 +31,13 @@ export default function BasicCard() {
     >
       <CardContent>
         <Typography variant="h5" component="div">
-          Hostel Name
+          Room number : X
         </Typography>
-        <Typography variant="body2">12 Rooms</Typography>
+        <Typography variant="body2">Status: not free</Typography>
+        <Typography variant="body2">3 Students</Typography>
       </CardContent>
       <CardActions>
-        <Link href="/building">
+        <Link href="/room">
           <Button size="small">View Details</Button>
         </Link>
       </CardActions>

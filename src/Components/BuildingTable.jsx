@@ -11,10 +11,10 @@ function createData(key, val) {
 }
 
 const rows = [
-  createData("Name", "Anurag Shukla"),
-  createData("Email", "test@email.com"),
-  createData("Phone", "75867597859"),
-  createData("No. of buildings", 12),
+  createData("Name", "Building X"),
+  createData("No. of Floors", 12),
+  createData("No. of Rooms", 96),
+  createData("No. of free rooms", 34),
 ];
 
 export default function BasicTable() {
