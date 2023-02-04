@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Stack, Avatar, Typography } from "@mui/material";
+import { Box, Stack, Avatar, Typography, Link } from "@mui/material";
 import Btn from "../Components/Btn";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -45,7 +44,7 @@ const Home = () => {
           The complete hostel management system
         </Typography>
 
-        <Link to="/login">
+        <Link>
           <Btn value="Login" />
         </Link>
       </Box>

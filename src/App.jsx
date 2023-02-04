@@ -6,25 +6,25 @@ import Login from './Pages/Login';
 
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  }
+	{
+		path: '/',
+		element: <Home />,
+	},
+	{
+		path: '/login',
+		element: <Login />,
+	}
 ])
 
 function App() {
-  return (
-    <main>
-      <RouterProvider 
-        router={router}>
-	  hello
-      </RouterProvider>
-    </main>
-  );
+	return (
+		<main>
+		<RouterProvider 
+		router={router}>
+		hello
+		</RouterProvider>
+		</main>
+	);
 }
 
 export default App;
