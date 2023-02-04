@@ -12,16 +12,51 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {Navigate} from 'react-router-dom'
 
 export default function LogIn() {
+
+
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
+
   const [loginAs, setloginAs] = useState();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const root = 'https://hostelhq.onrender.com'
+
+    fetch(`${root}/let-me-in`, {
+      method : 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        role : loginAs,
+        pass : data.get('pass'),
+        email : data.get('email')
+      })
+    })
+      .then(response => response.json())
+      .then(response => loginStatus(response.status, e))
+
+  
+
+  const loginStatus =(status,btn)=>{
+    if(status){
+      btn.innerText="redirecting..." ;
+      // location.href=`/dashboard`
+      <Navigate to={loginAs.value==0 ? '/warden' : loginAs.value==1 ? '/student' : '/staff' } />
+  
+    }
+    else{
+      btn.innerText="try again"
+    }
+  }
+
+
   };
 
   const handleDropDown = (e) => {
@@ -67,6 +102,8 @@ export default function LogIn() {
             required
             fullWidth
             id="email"
+            value={email}
+            onChange={(e)=> setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -77,10 +114,12 @@ export default function LogIn() {
             margin="normal"
             required
             fullWidth
-            name="password"
+            name="pass"
             label="Password"
             type="password"
             id="password"
+            value={pass}
+            onChange={(e)=> setPass(e.target.value)}
             autoComplete="current-password"
           />
           <FormControlLabel
@@ -89,11 +128,12 @@ export default function LogIn() {
           />
           <Button
             type="submit"
+            id="SignInBtn"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Log In
           </Button>
           <Grid container>
             <Grid item xs>
@@ -109,6 +149,7 @@ export default function LogIn() {
           </Grid>
         </Box>
       </Box>
+      
     </Container>
   );
 }
