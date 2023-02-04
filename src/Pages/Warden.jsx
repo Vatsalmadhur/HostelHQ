@@ -49,7 +49,7 @@ const Warden = () => {
             HostelHQ
           </Typography>
           <Link to="/addbuilding">
-            <Btn value="Add Hostel" />
+            <Btn value="Add Building" />
           </Link>
         </Stack>
       </Box>
@@ -60,18 +60,30 @@ const Warden = () => {
           mt: 15,
         }}
       >
-        <Typography variant="h2">Warden Profile</Typography>
-        <Table />
+        <Typography variant="h2" >Warden Profile</Typography>
+        <Table/>
       </Box>
 
+
       <Box
-        className="hostelDetails"
         sx={{
           width: "100vw",
           boxSizing: "border-box",
           height: "auto",
           mt: 15,
           bgcolor: "coral",
+          textAlign: "center",
+          p: 2
+        }}
+      >
+         <Typography variant="h3" >Existing Buildings</Typography>
+
+         <Box
+        className="hostelDetails"
+        sx={{
+          width: "100vw",
+          boxSizing: "border-box",
+          height: "auto",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -92,6 +104,8 @@ const Warden = () => {
         <BuildingBox />
         <BuildingBox />
       </Box>
+      </Box>
+
     </div>
   );
 };

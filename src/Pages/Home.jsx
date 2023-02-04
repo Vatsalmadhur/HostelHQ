@@ -4,10 +4,13 @@ import Btn from "../Components/Btn";
 
 import Circle from "../Components/Circle";
 import image from "../../src/hostelImg.svg";
+import { bgcolor, border } from "@mui/system";
 
 const Home = () => {
   return (
-    <div className="Home">
+    <Box>
+
+    <Box className="Home">
       <Box
         className="navbar"
         zIndex={2}
@@ -16,7 +19,7 @@ const Home = () => {
         sx={{
           width: "100%",
           height: "8vh",
-          bgcolor: "#ACACAC",
+          bgcolor:"rgb(92, 107, 192, 0.6)",
         }}
       >
         <Stack
@@ -71,7 +74,8 @@ const Home = () => {
           <img height={500} width={500} src={image} alt="" />
         </Box>
       </Box>
-    </div>
+    </Box>
+    </Box>
   );
 };
 

@@ -23,10 +23,13 @@ export default function BasicCard() {
         width: 250,
         height: "auto",
         minHeight: "200px",
+        borderRadius:"15",
         m: 2,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        "&:hover":{bgcolor:"#DEDEDE"},
+        transition:"0.4s"
       }}
     >
       <CardContent>
@@ -37,7 +40,7 @@ export default function BasicCard() {
       </CardContent>
       <CardActions>
         <Link href="/building">
-          <Button size="small">View Details</Button>
+          <Button size="small" sx={{textAlign:"end"}}>View Details</Button>
         </Link>
       </CardActions>
     </Card>
