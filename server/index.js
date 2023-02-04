@@ -136,8 +136,9 @@ app.post("/let-me-in", async (req, res) => {
 
 app.get("/checkAuth", async (req, res) => {
   const token = req.cookies.token;
+  const role = req.query.role;
   console.log(token);
-  const authData = await verifyToken(token);
+  const authData = await verifyToken(token, role);
   res.status(200).json({
     result: authData.result,
     data: authData.result
@@ -150,6 +151,10 @@ app.get("/checkAuth", async (req, res) => {
 });
 
 app.use(resolveToken);
+
+app.get("/getWardenData", (req, res) => {
+  const uid = req.usrProf.uid;
+});
 
 app.post("/add-building", async (req, res) => {
   const { name, floors } = req.body;
@@ -171,12 +176,14 @@ const server = http.listen(port, () => {
   console.log(`running on port ${port}`);
 });
 
-async function verifyToken(authToken) {
+async function verifyToken(authToken, role) {
   try {
+    const table = role == 0 ? "wardens" : role == 1 ? "students" : "staffs";
     const payload = jwt.verify(authToken, secret);
-    const query = `SELECT * FROM users WHERE uid = $1;`;
+    const query = `SELECT * FROM ${table} WHERE uid = $1;`;
     const values = [payload.data];
-    const { rows } = await db.query(query, values);
+    const { rows } = await database.query(query, values);
+    console.log(rows);
     if (rows.length == 0) {
       return { result: false };
     } else {
