@@ -53,6 +53,10 @@ const Building = () => {
             HostelHQ
           </Typography>
           <Link to={`/addfloor?bid=${bid}`}>
+            <Btn value=" Food Menu" />
+          </Link>
+
+          <Link to={`/addfloor?bid=${bid}`}>
             <Btn value="Add Floors" />
           </Link>
         </Stack>
