@@ -14,6 +14,8 @@ import Floor from "./Pages/Floor";
 import AddFloor from "./Pages/AddFloors";
 import AddRooms from "./Pages/AddRooms";
 import Room from "./Pages/Room";
+import Menu from "./Pages/Menu";
+import UpdateMenu from "./Pages/UpdateMenu";
 // import Chat from "./Pages/Chat/Chat";
 
 const router = createBrowserRouter([
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
   {
     path: "/room",
     element: <Room />,
+  },
+  {
+    path: "/menu",
+    element: <Menu />,
+  },
+  {
+    path: "/update-menu",
+    element: <UpdateMenu />,
   }
 ]);
 
