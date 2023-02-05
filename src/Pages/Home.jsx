@@ -1,80 +1,99 @@
 import React from "react";
 import { Box, Stack, Avatar, Typography, Link } from "@mui/material";
 import Btn from "../Components/Btn";
+import SignupBtn from "../Components/SignupBtn";
 
 import Circle from "../Components/Circle";
 import image from "../../src/hostelImg.svg";
 import { bgcolor, border } from "@mui/system";
+import bg from "../background.svg";
+import buildingBG from "../buildingBG.svg";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <Box>
-
-    <Box className="Home">
-      <Box
-        className="navbar"
-        zIndex={2}
-        position="absolute"
-        top={0}
-        sx={{
-          width: "100%",
-          height: "8vh",
-          bgcolor:"rgb(92, 107, 192, 0.6)",
-        }}
-      >
-        <Stack
-          direction="row"
+    <Box pb={8}>
+      <Box sx={{ zIndex: -1, height: "30vh" }}>
+        {" "}
+        <img src={bg} alt="image" />
+      </Box>
+      <Box>
+        <Box
+          className="Home"
           sx={{
-            p: 1,
-            justifyContent: "space-between",
-            alignItems: "center",
+            zIndex: 1,
+            mt: "-30vh",
+            // display:"flex",
+            // position: 'absolute',
+            top: 0,
           }}
         >
-          <Typography variant="h5" fontWeight={800} zIndex={2}>
-            HostelHQ
-          </Typography>
-          <Link href="/signup">
-            <Btn value="SignUp" />
-          </Link>
-        </Stack>
-      </Box>
+          <Stack
+            direction="row"
+            sx={{
+              p: 1,
+              // display:"flex",
+              // position: "relative",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h5" fontWeight={800} zIndex={2}>
+              HostelHQ
+            </Typography>
 
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="flex-start"
-        pl={8}
-        flexDirection="column"
-        height="100vh"
-        width="100vw"
-        overflow="hidden"
-        className="body"
-        position="relative"
-      >
-        <Typography variant="h1">HostelHQ</Typography>
-        <Typography variant="h4" mb={2} color="#EB7C3E">
-          The complete hostel management system.
-        </Typography>
-
-        <Link href="/login">
-          <Btn value="Login" />
-        </Link>
-        <Circle x={-100} y={-65} r={130} />
-        <Circle a={-150} b={-200} r={250} />
-        <Circle a={350} b={200} r={10} />
+            <Link href="/signup">
+              <SignupBtn value="SignUp" />
+            </Link>
+          </Stack>
+        </Box>
 
         <Box
           display="flex"
-          flexWrap="wrap"
-          position="absolute"
-          right={200}
-          top={80}
-          className="image"
+          justifyContent="space-around"
+          alignItems="center"
+          // pl={8}
+          flexDirection="row"
+          flexWrap="wrap-reverse"
+          height="100vh"
+          width="100vw"
+          overflow="hidden"
+          className="body"
+          position="relative"
+          // bgcolor="rgb(92, 107, 192, 0.4)"
+          // border="2px solid red"
         >
-          <img height={500} width={500} src={image} alt="" />
+          <Box
+            // display="flex"
+            // justifyContent="center"
+            // alignItems="flex-start"
+            // flexDirection="column"
+            height="400"
+            width="400"
+            overflow="hidden"
+            position="relative"
+            // bgcolor="rgb(92, 107, 192, 0.4)"
+            // border="2px solid red"
+            className="about"
+            pl={4}
+          >
+            <Typography variant="h1" id="heading">
+              HostelHQ
+            </Typography>
+            <Typography variant="h4" mb={2} color="#EB7C3E">
+              The complete hostel management system.
+            </Typography>
+
+            <Link href="/login">
+              <Btn value="Login" />
+            </Link>
+          </Box>
+
+          <Box height="auto" width="auto" margin={0} className="imageOut">
+            <img className="image" src={buildingBG} alt="" />
+          </Box>
         </Box>
       </Box>
-    </Box>
     </Box>
   );
 };

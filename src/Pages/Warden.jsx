@@ -6,7 +6,13 @@ import Table from "../Components/Table";
 import BuildingBox from "../Components/BuildingBox";
 
 const Warden = () => {
-  const [prof, setProf] = useState();
+  const [prof, setProf] = useState({
+    data: {
+      name: "Anurag",
+      Email: "www.anuragshukla@gmail.com",
+      phone: "7068179922",
+    },
+  });
   const [buildings, setBuildings] = useState();
   useEffect(() => {
     const verify = async () => {
@@ -26,7 +32,7 @@ const Warden = () => {
     };
 
     const getBuildings = async () => {
-      await fetch("http://localhost:5000/getBuildings", {
+      await fetch("http://localhost:5000/get-buildings", {
         method: "GET",
         crossdomain: true,
         withCredentials: "include",
@@ -108,7 +114,10 @@ const Warden = () => {
             p: 2,
             scrollX: "auto",
           }}
-        ></Box>
+        >
+          {buildings &&
+            buildings.map((building) => <BuildingBox data={building} />)}
+        </Box>
       </Box>
     </div>
   );

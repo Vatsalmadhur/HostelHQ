@@ -16,31 +16,35 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard() {
+export default function BasicCard({ data }) {
   return (
     <Card
       sx={{
         width: 250,
         height: "auto",
         minHeight: "200px",
-        borderRadius:"15",
+        borderRadius: "15",
         m: 2,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        "&:hover":{bgcolor:"#DEDEDE"},
-        transition:"0.4s"
+        "&:hover": { bgcolor: "#DEDEDE" },
+        transition: "0.4s",
       }}
     >
       <CardContent>
         <Typography variant="h5" component="div">
-          Hostel Name
+          {data.name}
         </Typography>
-        <Typography variant="body2">12 Rooms</Typography>
+        <Typography variant="body2">
+          {Math.floor(Math.random() * 10 + 1)} Floors
+        </Typography>
       </CardContent>
       <CardActions>
-        <Link href="/building">
-          <Button size="small" sx={{textAlign:"end"}}>View Details</Button>
+        <Link href={`/building?bid=${data.uid}`}>
+          <Button size="small" sx={{ textAlign: "end" }}>
+            View Details
+          </Button>
         </Link>
       </CardActions>
     </Card>
