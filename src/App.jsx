@@ -64,7 +64,11 @@ const router = createBrowserRouter([
   {
     path: "/room",
     element: <Room />,
-  }
+  },
+  // {
+  //   path: "/chat",
+  //   element: <Chat />,
+  // }
 ]);
 
 function App() {
