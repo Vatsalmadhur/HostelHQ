@@ -16,7 +16,7 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard() {
+export default function BasicCard({ floor }) {
   return (
     <Card
       sx={{

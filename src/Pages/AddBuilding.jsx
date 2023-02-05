@@ -20,7 +20,7 @@ export default function AddBuilding() {
     const data = new FormData(event.currentTarget);
     const root = "http://localhost:5000";
 
-    fetch(`${root}/addbuilding`, {
+    fetch(`${root}/add-building`, {
       method: "POST",
       withCredentials: "include",
       credentials: "include",
@@ -84,7 +84,7 @@ export default function AddBuilding() {
                 fullWidth
                 id="text"
                 label="Building Name"
-                name=""
+                name="name"
                 autoComplete=""
                 autoFocus
               />
@@ -94,9 +94,8 @@ export default function AddBuilding() {
                 fullWidth
                 id="text"
                 label="Number of Floors"
-                name=""
+                name="rooms"
                 autoComplete=""
-                autoFocus
               />
 
               <FormControlLabel

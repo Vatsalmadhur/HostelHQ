@@ -1,11 +1,34 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Btn from "../Components/Btn";
 import Table from "../Components/BuildingTable";
 import FloorBox from "../Components/FloorBox";
 
 const Building = () => {
+  const [floors, setFloors] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const bid = searchParams.get("bid");
+  React.useEffect(() => {
+    const bid = searchParams.get("bid");
+    if (!bid) location.href = "/warden";
+    const getFloors = async () => {
+      await fetch("http://localhost:5000/get-floors?bid=" + bid, {
+        method: "GET",
+        crossdomain: true,
+        withCredentials: "include",
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          setFloors(res);
+        });
+    };
+    getFloors();
+  }, []);
+
   return (
     <div className="Building">
       <Box
@@ -29,7 +52,7 @@ const Building = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/addfloor">
+          <Link to={`/addfloor?bid=${bid}`}>
             <Btn value="Add Floors" />
           </Link>
         </Stack>
@@ -46,7 +69,6 @@ const Building = () => {
       </Box>
 
       <Box
-
         sx={{
           width: "100vw",
           height: "auto",
@@ -54,39 +76,29 @@ const Building = () => {
           bgcolor: "coral",
           p: 2,
           scrollX: "auto",
-          textAlign:"center"
+          textAlign: "center",
         }}
       >
         <Typography variant="h3">Existing Floors</Typography>
-<Box
-        className="hostelDetails"
-        sx={{
-          width: "100vw",
-          boxSizing: "border-box",
-          height: "auto",
-          bgcolor: "coral",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          p: 2,
-          scrollX: "auto",
-        }}
-      >
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
-        <FloorBox />
+        <Box
+          className="hostelDetails"
+          sx={{
+            width: "100vw",
+            boxSizing: "border-box",
+            height: "auto",
+            bgcolor: "coral",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            p: 2,
+            scrollX: "auto",
+          }}
+        >
+          {floors && floors.map((floor) => <FloorBox data={floor} />)}
+        </Box>
       </Box>
-      </Box>
-
     </div>
   );
 };
