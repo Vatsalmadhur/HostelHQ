@@ -77,7 +77,7 @@ const addBuilding = async ({ name, floors, warden }) => {
   const values = [name, floors, warden, uid];
 
   const { rows } = await db.query(query, values);
-
+  console.log(rows);
   return rows;
 };
 

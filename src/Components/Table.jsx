@@ -10,7 +10,7 @@ function createData(key, val) {
   return { key, val };
 }
 
-export default function BasicTable({ prof }) {
+export default function BasicTable({ prof = { data: {} } }) {
   const rows = [
     createData("Name", prof.data.name),
     createData("Email", prof.data.email),
@@ -22,7 +22,7 @@ export default function BasicTable({ prof }) {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.name || "Madhur Vatsal"}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">

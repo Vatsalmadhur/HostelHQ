@@ -89,7 +89,9 @@ app.post("/add-new-user", async (req, res) => {
   }
 
   const uid = rows[0].uid;
-  const token = jwt.sign({ data: uid }, secret, { expiresIn: "7d" });
+  const token = jwt.sign({ data: uid, role: role }, secret, {
+    expiresIn: "7d",
+  });
   const expiryDate = new Date(Number(new Date()) + 7 * 24 * 3600000);
   res.setHeader(
     "Set-Cookie",
@@ -117,6 +119,7 @@ app.post("/let-me-in", async (req, res) => {
       const token = jwt.sign(
         {
           data: rows[0].uid,
+          role: role,
         },
         secret,
         { expiresIn: "7d" }
@@ -172,28 +175,42 @@ app.post("/add-floor", async (req, res) => {
   res.status(200).json(rows);
 });
 
-app.get("/getBuildings", async (req, res) => {
+app.get("/get-buildings", async (req, res) => {
   const warden = req.usrProf.uid;
   console.log(req.usrProf);
-  const rows = await db.getallBuildings(uid);
-  return rows;
+  const rows = await db.getallBuildings(warden);
+  res.json(rows);
 });
 
-app.post("/addBuilding", async (req, res) => {
+app.get("/get-floors", async (req, res) => {
+  const bid = req.query.bid;
+  const rows = await db.getallFloors(bid);
+  res.json(rows);
+});
+
+app.post("/add-building", async (req, res) => {
   const { name, floors } = req.body;
   const uid = req.usrProf.uid;
   const rows = await db.addBuilding({ name, floors, warden: uid });
-  res.send(rows);
+  res.status(200).json(rows);
+});
+
+app.post("/add-floor", async (req, res) => {
+  const { number, rooms } = req.body;
+  const bid = req.query.bid;
+  const rows = await db.addFloor({ building: bid, number, rooms });
+  res.status(200).json(rows);
 });
 
 const server = http.listen(port, () => {
   console.log(`running on port ${port}`);
 });
 
-async function verifyToken(authToken, role) {
+async function verifyToken(authToken, role = 0) {
   try {
-    const table = role == 0 ? "wardens" : role == 1 ? "students" : "staffs";
     const payload = jwt.verify(authToken, secret);
+    role = payload.role;
+    const table = role == 0 ? "wardens" : role == 1 ? "students" : "staffs";
     const query = `SELECT * FROM ${table} WHERE uid = $1;`;
     const values = [payload.data];
     const { rows } = await database.query(query, values);
