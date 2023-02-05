@@ -64,6 +64,7 @@ export default function AddBuilding() {
               alignItems: "center",
               bgcolor: "#fff",
               borderRadius: "10px",
+              borderTop: "4px solid #EB7C3E"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>

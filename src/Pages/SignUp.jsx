@@ -114,6 +114,7 @@ export default function SignUp() {
               bgcolor: "white",
               borderRadius: "10px",
               position: "relative",
+              borderTop: "4px solid #EB7C3E"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>

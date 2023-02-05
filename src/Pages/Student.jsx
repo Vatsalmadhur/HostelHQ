@@ -1,8 +1,9 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Avatar, Card } from "@mui/material";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Btn from "../Components/Btn";
 import Table from "../Components/Table";
+import StudentStatus from "../Components/StudentStatus";
 
 const Student = () => {
   useEffect(() => {
@@ -46,13 +47,17 @@ const Student = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/complain-form">
+          <Link to="/complaint">
             <Btn value="Add Complain" />
           </Link>
         </Stack>
       </Box>
 
-      <Box sx={{ mt: 10, textAlign: "center" }}>
+      <Box sx={{ mt: 12, textAlign: "center", display: "flex", justifyContent: "center" }}>
+        <Avatar sx={{ bgcolor: "purple", }}>N</Avatar>
+      </Box>
+
+      <Box sx={{ mt: 2, textAlign: "center" }}>
         <h1>Student Detail</h1>
       </Box>
 
@@ -64,6 +69,20 @@ const Student = () => {
       >
         <Table />
       </Box>
+
+      <Card sx={{ 
+        textAlign: "center",
+        width: 250,
+        height: "auto",
+        minHeight: "200px",
+        my: 5,
+        pt: 4,
+        mx: "auto",
+        display: "flex",
+        justifyContent: "center",
+        }}>
+        <StudentStatus />
+      </Card>
     </div>
   );
 };
