@@ -42,6 +42,7 @@ const Room = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
         }}>
             <RoomDetailsBox />
         </Box>

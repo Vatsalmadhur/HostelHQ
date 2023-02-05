@@ -30,6 +30,7 @@ export default function BasicCard({ data }) {
         justifyContent: "center",
         "&:hover": { bgcolor: "#DEDEDE" },
         transition: "0.4s",
+        borderTop: "2px solid #EB7C3E"
       }}
     >
       <CardContent>

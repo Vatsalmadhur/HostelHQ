@@ -27,6 +27,7 @@ export default function BasicCard({ floor }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        borderTop: "2px solid #EB7C3E"
       }}
     >
       <CardContent>

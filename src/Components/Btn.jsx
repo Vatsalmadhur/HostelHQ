@@ -7,7 +7,7 @@ const Btn = (props) => {
     <div>
       <Button
         sx={{
-          bgcolor:"coral",
+          bgcolor:"#EB7C3E",
           "&:hover": { bgcolor: "coral" },
         }}
         variant="contained"
