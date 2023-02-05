@@ -1,5 +1,6 @@
 const { Pool } = require("pg");
 require("dotenv").config();
+<<<<<<< HEAD
 
 const pool = new Pool({
   user: "anurag",
@@ -11,6 +12,11 @@ const pool = new Pool({
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
   ssl: true,
+=======
+const connectionString = process.env.PSQL_URL;
+const pool = new Pool({
+  connectionString: connectionString,
+>>>>>>> origin
 });
 
 module.exports = {

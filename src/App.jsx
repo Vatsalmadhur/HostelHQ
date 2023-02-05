@@ -1,15 +1,13 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
-import { Box } from "@mui/material";
-import Warden from "./Pages/Warden";
-import AddBuilding from "./Pages/AddBuilding";
-import Building from "./Pages/Building";
-import Student from "./Pages/Student";
-import Staff from "./Pages/StaffDetail";
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import SignUp from './Pages/SignUp';
+import {Box} from '@mui/material';
+import Warden from './Pages/Warden';
+import AddBuilding from './Pages/AddBuilding';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,20 +28,8 @@ const router = createBrowserRouter([
   {
     path: "/addbuilding",
     element: <AddBuilding />,
-  },
-  {
-    path: "/building",
-    element: <Building />,
-  },
-  {
-    path: "/student",
-    element: <Student />,
-  },
-  {
-    path: "/staff",
-    element: <Staff />,
-  },
-]);
+  }
+])
 
 function App() {
   return (
