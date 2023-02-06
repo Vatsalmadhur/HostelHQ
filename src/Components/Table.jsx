@@ -10,7 +10,9 @@ function createData(key, val) {
   return { key, val };
 }
 
-export default function BasicTable({ prof = { data: {} } }) {
+export default function BasicTable({
+  prof = { data: { name: "Manish kumar Rai", email: "myemail@gmail.com" } },
+}) {
   const rows = [
     createData("Name", prof.data.name),
     createData("Email", prof.data.email),

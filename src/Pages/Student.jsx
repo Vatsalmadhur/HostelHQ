@@ -18,7 +18,6 @@ const Student = () => {
     };
     const manageAuth = (val) => {
       if (!val.result) {
-        location.href = `/login`;
       }
     };
     verify();
@@ -53,8 +52,15 @@ const Student = () => {
         </Stack>
       </Box>
 
-      <Box sx={{ mt: 12, textAlign: "center", display: "flex", justifyContent: "center" }}>
-        <Avatar sx={{ bgcolor: "purple", }}>N</Avatar>
+      <Box
+        sx={{
+          mt: 12,
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Avatar sx={{ bgcolor: "purple" }}>N</Avatar>
       </Box>
 
       <Box sx={{ mt: 2, textAlign: "center" }}>
@@ -70,17 +76,19 @@ const Student = () => {
         <Table />
       </Box>
 
-      <Card sx={{ 
-        textAlign: "center",
-        width: 250,
-        height: "auto",
-        minHeight: "200px",
-        my: 5,
-        pt: 4,
-        mx: "auto",
-        display: "flex",
-        justifyContent: "center",
-        }}>
+      <Card
+        sx={{
+          textAlign: "center",
+          width: 250,
+          height: "auto",
+          minHeight: "200px",
+          my: 5,
+          pt: 4,
+          mx: "auto",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <StudentStatus />
       </Card>
     </div>
@@ -88,4 +96,3 @@ const Student = () => {
 };
 
 export default Student;
-

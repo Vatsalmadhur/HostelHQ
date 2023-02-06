@@ -6,7 +6,6 @@ import Table from "../Components/BuildingTable";
 import RoomDetailsBox from "../Components/RoomDetailsBox";
 import RoomStudentDetailsBox from "../Components/RoomStudentDetailsBox";
 
-
 const Room = () => {
   return (
     <div className="Room">
@@ -31,25 +30,30 @@ const Room = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/allocate-room">
-            <Btn value="Allocate room" />
-          </Link>
+          <Box display="flex" gap={2}>
+            <Link to="/allocate">
+              <Btn value="Allocate room" />
+            </Link>
+
+            <Link to="/deallocate">
+              <Btn value="Deallocate room" />
+            </Link>
+          </Box>
         </Stack>
       </Box>
 
-        <Box sx={{
-            mt: 15,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            
-        }}>
-            <RoomDetailsBox />
-        </Box>
-      
+      <Box
+        sx={{
+          mt: 15,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <RoomDetailsBox />
+      </Box>
 
       <Box
-
         sx={{
           width: "100vw",
           height: "auto",
@@ -57,36 +61,34 @@ const Room = () => {
           bgcolor: "coral",
           p: 2,
           scrollX: "auto",
-          textAlign:"center"
+          textAlign: "center",
         }}
       >
         <Typography variant="h3">Student Details</Typography>
-<Box
-        className="hostelDetails"
-        sx={{
-          width: "100vw",
-          boxSizing: "border-box",
-          height: "auto",
-          bgcolor: "coral",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          p: 2,
-          scrollX: "auto",
-        }}
-      >
-        <RoomStudentDetailsBox />
-        <RoomStudentDetailsBox />
-        <RoomStudentDetailsBox />
-        <RoomStudentDetailsBox />
-        <RoomStudentDetailsBox />
-        <RoomStudentDetailsBox />
-        
+        <Box
+          className="hostelDetails"
+          sx={{
+            width: "100vw",
+            boxSizing: "border-box",
+            height: "auto",
+            bgcolor: "coral",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            p: 2,
+            scrollX: "auto",
+          }}
+        >
+          <RoomStudentDetailsBox />
+          <RoomStudentDetailsBox />
+          <RoomStudentDetailsBox />
+          <RoomStudentDetailsBox />
+          <RoomStudentDetailsBox />
+          <RoomStudentDetailsBox />
+        </Box>
       </Box>
-      </Box>
-
     </div>
   );
 };

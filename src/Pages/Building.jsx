@@ -52,7 +52,7 @@ const Building = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to={`/addfloor?bid=${bid}`}>
+          <Link to={`/menu?bid=${bid}`}>
             <Btn value=" Food Menu" />
           </Link>
 
@@ -100,7 +100,12 @@ const Building = () => {
             scrollX: "auto",
           }}
         >
-          {floors && floors.map((floor) => <FloorBox data={floor} />)}
+          <FloorBox />
+          <FloorBox />
+          <FloorBox />
+          <FloorBox />
+          <FloorBox />
+          <FloorBox />
         </Box>
       </Box>
     </div>

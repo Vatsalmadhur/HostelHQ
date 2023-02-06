@@ -1,6 +1,7 @@
 {
   "name": "hostelhq",
   "private": true,
+  "homepage":"https://vatsalmadhur.github.io/HostelHQ", 
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -17,7 +17,6 @@ const Student = () => {
     };
     const manageAuth = (val) => {
       if (!val.result) {
-        location.href = `/login`;
       }
     };
     verify();
@@ -46,7 +45,7 @@ const Student = () => {
           <Typography variant="h5" fontWeight={800}>
             HostelHQ
           </Typography>
-          <Link to="/complain-form">
+          <Link to="/update-menu">
             <Btn value="Edit Menu" />
           </Link>
         </Stack>
@@ -69,4 +68,3 @@ const Student = () => {
 };
 
 export default Student;
-

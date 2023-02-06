@@ -16,6 +16,9 @@ import AddRooms from "./Pages/AddRooms";
 import Room from "./Pages/Room";
 import Menu from "./Pages/Menu";
 import UpdateMenu from "./Pages/UpdateMenu";
+import Complaint from './Complaint'
+import Allocate from './Allocate'
+import DeAllocate from './DeAllocate'
 // import Chat from "./Pages/Chat/Chat";
 
 const router = createBrowserRouter([
@@ -74,7 +77,19 @@ const router = createBrowserRouter([
   {
     path: "/update-menu",
     element: <UpdateMenu />,
+  }, {
+	  path:"/complaint", 
+	  element:<Complaint/>
   }
+, {
+	  path:"/allocate", 
+	  element:<Allocate/>
+  }
+, {
+	  path:"/deallocate", 
+	  element:<DeAllocate/>
+  }
+
 ]);
 
 function App() {
